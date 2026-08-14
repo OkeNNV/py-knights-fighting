@@ -2,7 +2,7 @@ from app.fighter.knight import Knight
 
 
 class Battle:
-    """"Manages a combat simulation between multiple knights,
+    """Manages a combat simulation between multiple knights,
     handling setup and fight execution.
 
         Attributes:
@@ -21,9 +21,9 @@ class Battle:
         for key, config in self.knights_config.items():
             knight = Knight(**config)
 
+            knight.wear_armour()
             if knight.weapon:
                 knight.draw_weapon()
-            knight.wear_armour()
             if knight.potion:
                 knight.use_potion()
 
