@@ -21,11 +21,12 @@ class Battle:
         for key, config in self.knights_config.items():
             knight = Knight(**config)
 
+            if knight.weapon:
+                knight.draw_weapon()
             knight.wear_armour()
             if knight.potion:
                 knight.use_potion()
-            if knight.weapon:
-                knight.draw_weapon()
+            
             self.knights[key] = knight
 
     def fight(self) -> dict:

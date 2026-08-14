@@ -60,10 +60,15 @@ class Knight:
 
     def use_potion(self) -> None:
         """Applies the effects of the equipped potion
-        to the knight's relevant stats."""
+        to the knight's relevant stats safely."""
+        if not self.potion:
+            return
+
+        allowed_stats = {"hp", "power", "protection"}
         for stat, value in self.potion.effect.items():
-            current = getattr(self, stat)
-            setattr(self, stat, current + value)
+            if stat in allowed_stats and hasattr(self, stat):
+                current = getattr(self, stat)
+                setattr(self, stat, current + value)
 
     def hit_exchange(self, opponent: Knight) -> None:
         """Executes a mutual attack exchange between
@@ -81,5 +86,5 @@ class Knight:
 
     def exceed_threshold(self) -> None:
         """Ensures the knight's hit points do not drop below zero."""
-        if self.hp < 0:
+        if self.hp <= 0:
             self.hp = 0
