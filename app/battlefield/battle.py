@@ -2,7 +2,7 @@ from app.fighter.knight import Knight
 
 
 class Battle:
-    """Manages a combat simulation between multiple knights,
+    """"Manages a combat simulation between multiple knights,
     handling setup and fight execution.
 
         Attributes:
@@ -26,7 +26,7 @@ class Battle:
             knight.wear_armour()
             if knight.potion:
                 knight.use_potion()
-            
+
             self.knights[key] = knight
 
     def fight(self) -> dict:
