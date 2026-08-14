@@ -41,7 +41,6 @@ class Knight:
         """INIT"""
         self.name = name
         self.hp = hp
-        self.base_power = power
         self.protection = 0
         self.power = power
 

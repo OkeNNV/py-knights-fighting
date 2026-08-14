@@ -9,10 +9,16 @@ class Battle:
             knights (dict[str, Knight]):
             A dictionary mapping identifiers to initialized Knight objects.
     """
+
     def __init__(self, knights: dict) -> None:
         """INIT"""
+        self.knights_config = knights
         self.knights = {}
-        for key, config in knights.items():
+
+    def battle_preparation(self) -> None:
+        """Instantiates knights from configuration
+        and applies their gear and stats."""
+        for key, config in self.knights_config.items():
             knight = Knight(**config)
 
             knight.wear_armour()
@@ -30,6 +36,8 @@ class Battle:
                 dict: A dictionary mapping each
                 knight's name to their final hit point value.
         """
+
+        self.battle_preparation()
         lancelot: Knight = self.knights["lancelot"]
         red_knight: Knight = self.knights["red_knight"]
         bastard: Knight = self.knights["mordred"]
